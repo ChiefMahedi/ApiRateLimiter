@@ -13,8 +13,10 @@ export default class TokenBucket {
     private fillBucket(): void {
         const now = Date.now();
         const elapsed = now - this.lastFilled;
+        console.log('Elapsed time:',elapsed)
         this.tokens += elapsed * (this.fillRate / 1000);
         this.tokens = Math.min(this.tokens, this.capacity);
+        console.log('Tokens:',this.tokens)
         this.lastFilled = now;
     }
 
